@@ -1,0 +1,74 @@
+#mainFooter {
+	width: 100%;
+	min-height: 360px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-top: 1px solid rgba(206, 206, 206, 0.2);
+	padding-top: 8rem;
+}
+#mainFooter .top {
+	max-width: 1240px;
+	width: 100%;
+	padding-bottom: 6rem;
+}
+#mainFooter .top > ul {
+	display: flex;
+	justify-content: space-between;
+}
+#mainFooter .top ul > li {
+	flex: 1;
+	font-weight: 700;
+	@apply text-primaryText;
+	font-size: 16px;
+	letter-spacing: 1.6px;
+}
+#mainFooter .top ul > li > div {
+	overflow: hidden;
+}
+#mainFooter .top ul ul {
+	margin-top: 2rem;
+}
+
+#mainFooter .top ul ul > li {
+	font-weight: 400;
+	@apply text-secondaryText;
+	font-size: 14px;
+	letter-spacing: 0px;
+	position: relative;
+	left: -1rem;
+	transition: 300ms;
+}
+#mainFooter .top ul ul > li svg {
+	width: 1rem;
+}
+#mainFooter .top ul ul > li:hover {
+	left: 0;
+}
+#mainFooter ul ul > li:hover a {
+	transition: margin-left 300ms 75ms ease;
+	margin-left: 0.5rem;
+}
+#mainFooter .bottom {
+	border-top: 1px solid rgba(206, 206, 206, 0.2);
+	align-items: center;
+	padding-top: 1rem;
+}
+#mainFooter .bottom .left {
+	font-size: 12px;
+	font-weight: 100;
+}
+#mainFooter .bottom li {
+	align-items: center;
+}
+#mainFooter .bottom li svg {
+	width: 1rem;
+	transition: 300;
+}
+#mainFooter .bottom li:hover svg {
+	fill: #929292;
+}
+#mainFooter .bottom li + li {
+	margin-left: 1rem;
+}

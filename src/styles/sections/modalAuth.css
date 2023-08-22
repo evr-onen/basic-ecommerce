@@ -1,0 +1,14 @@
+.modalAuthWrapper input.authInput {
+	padding: 15px 20px;
+	width: 100%;
+	@apply border border-black/10 text-black/90;
+	font-size: 13px;
+}
+.modalAuthWrapper input.authInput::placeholder {
+	font-size: 13px;
+	font-weight: 300;
+	@apply text-black/80;
+}
+.modalAuthWrapper input.authInput:focus {
+	outline: none;
+}

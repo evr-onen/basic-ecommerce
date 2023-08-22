@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;500;600;700&family=Montserrat:wght@100;300;500;600;700&display=swap");
+@import "./globals.css";
+@import "./page/home/index.css";
+@import "src/styles/page/dashboard/product.css";
+@import "./sections/mainHeader.css";
+@import "./sections/mainFooter.css";
+@import "./sections/adminPanel.css";
+@import "./sections/modalAuth.css";
+@import "./ui/textInput.css";
+@import "./ui/selectInput.css";
+@import "./ui/modal.css";

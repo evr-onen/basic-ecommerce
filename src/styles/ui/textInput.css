@@ -1,0 +1,7 @@
+.inputFocus {
+	@apply -top-[10px] left-1  -translate-x-0;
+}
+
+.textInput:focus {
+	@apply !shadow-primary outline-primary border-none;
+}

@@ -1,0 +1,29 @@
+.selectInputWrapper select option {
+	@apply font-montserrat;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: capitalize;
+}
+.selectInputWrapper {
+	position: relative;
+}
+
+.selectInputWrapper > label {
+	@apply truncate px-[2px] text-sm font-medium  bg-white capitalize cursor-text absolute left-1 top-0 -translate-y-1/2;
+}
+.selectInput {
+	@apply h-12 pl-2 border-2  border-bodySecondary/70 rounded text-sm !font-medium !shadow-black;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: white;
+	height: 45px;
+	width: 100%;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+	background-position: 100%;
+	background-repeat: no-repeat;
+	text-transform: capitalize;
+	padding: 0.5rem;
+}
+.selectInput:focus {
+	@apply !shadow-primary   border-2 border-primary rounded outline-2 outline-primary;
+}

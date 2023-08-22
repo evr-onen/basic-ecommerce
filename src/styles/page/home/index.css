@@ -1,0 +1,68 @@
+.filterArea {
+	margin-bottom: 4rem;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 700;
+}
+.filterArea .left ul li {
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.filterArea .left ul li:hover {
+	color: red;
+}
+.filterArea .left ul li.currentItem {
+	color: red;
+}
+.filterArea .left ul li + li {
+	margin-left: 1rem;
+}
+.filterArea .right ul li {
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+.filterArea .bottom {
+	min-height: 40rem;
+}
+
+/*					 slider							 */
+
+#homePage .slideImage {
+	position: absolute !important;
+}
+
+#homePage .swiper-slide .slider1 {
+	top: 100%;
+}
+#homePage .swiper-slide-active .slider1 {
+	top: 0px !important;
+}
+#homePage .swiper-slide .slider2 {
+	top: -100%;
+}
+#homePage .swiper-slide-active .slider2 {
+	top: -30px !important;
+}
+#homePage .swiper-slide .slider3 {
+	top: 100%;
+}
+#homePage .swiper-slide-active .slider3 {
+	top: 200px !important;
+}
+
+#homePage .swiper-slide-active .texts {
+	@apply left-1/2 opacity-100;
+}
+
+#homePage .filterArea .itemWrapper:hover .imageWrapper > div {
+	@apply bottom-0 opacity-100 visible;
+}
+
+#homePage .filterArea .itemWrapper:hover .price > p {
+	@apply left-1/2 -translate-x-1/2 visible opacity-100;
+}
+#homePage .filterArea .itemWrapper:hover .price span {
+	@apply left-full opacity-0 invisible;
+}

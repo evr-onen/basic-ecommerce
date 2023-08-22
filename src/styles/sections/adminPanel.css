@@ -1,0 +1,45 @@
+#adminContentSection .sideNav {
+	padding: 1rem;
+}
+
+#adminContentSection .sideNav > ul > li p {
+	@apply text-primary bg-white/5;
+
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+#adminContentSection .sideNav > ul > div {
+	transition: 300ms;
+	overflow: hidden;
+	height: 0;
+	border-radius: 8px;
+	cursor: pointer;
+	margin: 0.5rem 0;
+}
+#adminContentSection .sideNav > ul > div > div {
+	@apply text-secondary border border-white/10;
+
+	height: 2rem;
+	display: flex;
+	padding-left: 1rem;
+}
+#adminContentSection .sideNav > ul > div > div:first-of-type {
+	border-radius: 8px 8px 0 0;
+}
+#adminContentSection .sideNav > ul > div > div:last-of-type {
+	border-radius: 0 0 8px 8px;
+}
+
+#adminContentSection .sideNav > ul > div > div:hover {
+	@apply bg-secondary/50 text-bodyPrimary;
+}
+#adminContentSection .sideNav > ul > div > div a {
+	margin: auto 0;
+}
+#adminContentSection .sideNav > ul > div > div + div {
+	margin-top: 0.5rem;
+}
+
+.onSelected {
+	@apply bg-primary/20 !text-bodyPrimary;
+}

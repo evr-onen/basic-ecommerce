@@ -1,0 +1,9 @@
+.overlay {
+	visibility: visible;
+	opacity: 1;
+	transition: 500ms;
+}
+.overlay > div {
+	opacity: 1;
+	visibility: visible;
+}

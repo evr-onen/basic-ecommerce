@@ -1,0 +1,9 @@
+.buttonStyle {
+	@apply bg-primary text-bodyPrimary text-sm font-semibold py-3 px-4 rounded-md max-w-[200px] flex justify-center shadow  cursor-pointer;
+}
+.buttonStyle:hover {
+	@apply bg-primary/90;
+}
+.buttonStyle svg {
+	@apply stroke-bodyPrimary fill-bodyPrimary !w-6;
+}

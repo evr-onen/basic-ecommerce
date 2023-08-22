@@ -1,0 +1,113 @@
+#mainHeader .mainHeaderPageNav {
+	@apply font-thin uppercase h-full;
+}
+#mainHeader .mainHeaderPageNav > ul {
+	display: flex;
+	@apply h-full;
+}
+#mainHeader .mainHeaderPageNav > ul > li + li {
+	margin-left: 2rem;
+}
+#mainHeader .mainHeaderPageNav > ul > li > p {
+	margin: auto;
+	cursor: pointer;
+}
+#mainHeader .mainHeaderPageNav > ul > li {
+	position: relative;
+	font-size: 12px;
+	height: 100%;
+	display: flex;
+	font-weight: 700;
+	transition: 300ms;
+	letter-spacing: 1.25px;
+}
+#mainHeader .mainHeaderPageNav > ul ul {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	padding: 1rem;
+	background-color: rgb(26, 26, 26);
+	color: antiquewhite;
+	min-width: 12rem;
+	width: 100%;
+	height: 0;
+	overflow-y: hidden;
+	transition: 300ms;
+	z-index: 99;
+}
+#mainHeader .mainHeaderPageNav > ul ul div {
+	overflow-x: hidden;
+}
+#mainHeader .mainHeaderPageNav > ul ul li {
+	font-size: 14px;
+	position: relative;
+	left: -1rem;
+	transition: 300ms;
+	@apply text-secondaryText tracking-wider text-xs capitalize font-normal;
+}
+#mainHeader .mainHeaderPageNav > ul ul li svg {
+	width: 1rem;
+}
+#mainHeader .mainHeaderPageNav > ul > li:hover {
+	@apply text-black/40;
+}
+#mainHeader .mainHeaderPageNav > ul > li:hover ul {
+	visibility: visible;
+	opacity: 1;
+	height: 100%;
+}
+#mainHeader .mainHeaderPageNav > ul ul div > li:hover {
+	left: 0;
+}
+#mainHeader .mainHeaderPageNav > ul ul div > li a {
+	position: relative;
+	left: 0;
+}
+#mainHeader .mainHeaderPageNav > ul ul div > li:hover a {
+	transition: margin-left 300ms 75ms ease;
+	margin-left: 0.5rem;
+	@apply text-white;
+}
+
+#mainHeader .right {
+	display: flex;
+}
+#mainHeader .right svg {
+	width: 1.25rem;
+}
+#mainHeader .right .sideBar svg {
+	width: 2rem;
+}
+#mainHeader .right > div {
+	display: flex;
+	font-size: 12px;
+	font-weight: 700;
+}
+#mainHeader .right > div + div {
+	margin-left: 2rem;
+}
+.rightHeaderBtns div:last-of-type {
+	transition: 300ms;
+	opacity: 0;
+	visibility: hidden;
+}
+.rightHeaderBtns:hover div:last-of-type {
+	opacity: 1;
+	visibility: visible;
+}
+#searchProductItems > div {
+	@apply invisible opacity-0;
+}
+.searchOverlay input:focus {
+	outline: none;
+}
+#sideNavSlider ul div {
+	overflow: hidden;
+
+	transition: 300ms;
+}
+.onSelectedSideNav {
+	@apply bg-black/70 !text-white px-2;
+}
