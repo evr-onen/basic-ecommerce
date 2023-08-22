@@ -1,34 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+HTML ve CSS bilgilerimi pekistirmek, bu pekistirdigim bilgilerle reusable componenti kavramak, next 13 kullarak app directory`i kullanimina alismak icin yaptigim bir proje..
+next ts tailwind next-auth swiper kullanildi.
+Sidenav modal gibi ui tarzi seyleri kendim yaptim. yup kullanmadan kendim hata bildirimlerini yapmaya calistim. UI icin https://depot.qodeinteractive.com/ sitesini ornek olarak kullandim. Basit bi admin paneli var. Sadece product yaratmak icin yaptim. cok sade basit.
+O yuzden de bir cok eksigi var admin panelde ozellikle. Product yaratirken discont yok ya da home page de ki sliderdaki imagelari yonetecek options page yok variantlar yok iade kismi yok...  dedigim gibi sadece pekistirmek anlamak icin yaptigim bir proje. 
 
-## Getting Started
+A project I did to reinforce my HTML and CSS knowledge, to understand the reusable component with this reinforced knowledge, to get used to using the app directory using next 13.
+next ts tailwind next-auth swiper was used.
+I made ui stuff like sidenav modal by myself. i tried to make bug reports by myself without using yup. i used https://depot.qodeinteractive.com/ as an example for UI. there is a simple admin panel. I did it just to create a product. very simple simple.
+Therefore, it has many shortcomings, especially in the admin panel. There is no discont when creating a product or there is no options page to manage the images in the slider on the home page, there are no variants, there is no return section ... as I said, it is a project I did just to reinforce and understand. 
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
