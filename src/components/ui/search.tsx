@@ -20,7 +20,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 		return (
 			<div
 				key={productItem.id}
-				className="itemWrapper bg-white flex flex-col items-center !opacity-100 !visible  mb-8 mr-8 duration-1000"
+				className="itemWrapper bg-white flex flex-col items-center !opacity-100 !visible  mb-8 mr-8 duration-1000 min-w-[240px] min-h-[240px] "
 			>
 				<div
 					className="imageWrapper group w-auto h-full relative flex overflow-hidden"
@@ -118,7 +118,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 			}`}
 			onClick={(e) => overlayCloseHandler(e)}
 		>
-			<div className="bg-white h-16 w-80 mt-20">
+			<div className="bg-white !h-16 w-80 mt-20 fixed -top-0">
 				<input
 					type="text"
 					className="pl-8 h-full w-full"
@@ -128,10 +128,10 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 					autoFocus
 				/>
 			</div>
-			<div id="searchProductItems" className="mt-10  flex overflow-x-auto w=[80%] flex-wrap justify-center">
+
+			<div id="searchProductItems" className="mt-40  flex overflow-x-auto w-[80%]  flex-wrap justify-center bg-black ">
 				{renderSearchResult()}
 			</div>
-			;
 		</div>
 	);
 };

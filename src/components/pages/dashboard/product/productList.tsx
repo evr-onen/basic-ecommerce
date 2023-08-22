@@ -1,5 +1,6 @@
-import Image from "next/image";
+// ** Core
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 // ** Types
@@ -14,11 +15,18 @@ type ProductType = {
 type OptionType = { id: number; label: string };
 
 const ProductList = ({ products }: { products: ProductType[] }) => {
+	// ** States
 	const [productsData, setProductsData] = useState(products);
+
+	// ** Hooks
 	const router = useRouter();
+
+	// ** Handlers
 	const deleteHandler = (id: number) => {
 		setProductsData((prev) => prev.filter((product) => product.id !== id));
 	};
+
+	// ** Renders
 	const renderProductItems = () => {
 		return productsData.map((product: ProductType) => {
 			return (

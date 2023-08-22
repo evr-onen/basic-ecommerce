@@ -1,17 +1,18 @@
 "use client";
+// ** Core
 import React, { useEffect } from "react";
-import Slider from "@/components/pages/home/product/singleProduct/ProductSlider";
-import { useProductStore } from "@/store";
-import Summary from "@/components/pages/home/product/singleProduct/summary";
 
-const Page = ({
-	params,
-	searchParams,
-}: {
-	params: { productId: string };
-	searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+// ** Stores
+import { useProductStore } from "@/store";
+
+// ** Components
+import Summary from "@/components/pages/home/product/singleProduct/summary";
+import Slider from "@/components/pages/home/product/singleProduct/ProductSlider";
+
+const Page = ({ params }: { params: { productId: string } }) => {
 	const { productId } = params;
+
+	// ** Hooks
 	const product = useProductStore((state) => state.products)?.find((product) => product.id === Number(productId))!;
 
 	return (

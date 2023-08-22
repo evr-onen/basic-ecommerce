@@ -1,13 +1,14 @@
 "use client";
+
+// ** Components
 import MainPageSlider from "@/components/pages/home/MainPageSlider";
 import FilterArea from "@/components/pages/home/FilterArea";
-import { useSession } from "next-auth/react";
+
+// ** Store
 import { useProductStore } from "@/store";
 
 export default function Home() {
 	const products = useProductStore((state) => state.products);
-
-	const { data: session, status } = useSession();
 
 	return (
 		<div id="homePage" className="page min-h-[90vh] max-w-[1240px] w-full mx-8 mt-[10vh] ">

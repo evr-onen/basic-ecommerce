@@ -1,19 +1,28 @@
 "use client";
-import TextInput from "@/components/ui/html/TextInput";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
-import React, { useRef, useEffect, useState } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
+// ** Reuseable Components
+import TextInput from "@/components/ui/html/TextInput";
+
+// ** Next-Auth
+import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 const Page = () => {
 	const ref = useRef(null);
+
+	// ** States
 	const [username, setUsername] = useState("admin");
 	const [password, setPassword] = useState("1234");
 	const [errMessage, setErrMessage] = useState<string | null>(null);
-	const { data: session, status } = useSession();
 
+	// ** Hooks
+	const { data: session, status } = useSession();
 	const router = useRouter();
+
+	// ** Handlers
 	const handleSignIn = async () => {
 		try {
 			const response = await signIn("credentials", {
@@ -31,10 +40,6 @@ const Page = () => {
 			console.log(error);
 		}
 	};
-
-	// useEffect(() => {
-	// 	router.push("/");
-	// }, [status]);
 
 	return (
 		<div className="h-screen w-full flex flex-col justify-center items-center bg-bodyPrimary">

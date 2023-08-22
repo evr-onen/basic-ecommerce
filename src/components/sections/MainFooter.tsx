@@ -1,6 +1,11 @@
-import { mainFooterPages } from "@/constants/mainFooter";
-import { mainFooterPagesType } from "@/types/constants";
+// ** Core
 import Link from "next/link";
+
+// ** Constants
+import { mainFooterPages } from "@/constants/mainFooter";
+
+// ** Types
+import { mainFooterPagesType } from "@/types/constants";
 
 const MainFooter = () => {
 	const renderFooterPages = () => {

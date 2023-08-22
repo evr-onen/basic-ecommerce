@@ -1,15 +1,26 @@
 "use client";
-import { adminSideNav } from "@/constants/adminSideNav";
-import { AdminSideNavType } from "@/types/constants";
-import Link from "next/link";
+// ** Core
 import { Fragment, useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// ** Components
+import { adminSideNav } from "@/constants/adminSideNav";
+
+// ** Const
+import { AdminSideNavType } from "@/types/constants";
+
 const AdminSideNav = () => {
+	// ** Hooks
 	const location = usePathname();
+
+	// ** Const
 	const currentLocation = location.split("/")[2] === "welcome" ? "dashboard" : location.split("/")[2];
+
+	// ** States
 	const [isOpenArray, setIsOpenArray] = useState<string[] | []>([currentLocation]);
 
+	// ** Handler
 	const clickTitleHandler = (title: string) => {
 		if (isOpenArray.indexOf(title.toLowerCase() as never) === -1) {
 			setIsOpenArray((prev) => [...prev, title.toLowerCase()]);

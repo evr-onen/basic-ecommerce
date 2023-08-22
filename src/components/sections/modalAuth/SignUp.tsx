@@ -1,8 +1,12 @@
-import { useSession } from "next-auth/react";
+// ** Core
 import React, { useState } from "react";
+
+// ** Auth they will use
+import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
 
 const SignUp = () => {
+	// ** States
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

@@ -1,18 +1,26 @@
-import { Catamaran, Montserrat } from "next/font/google";
-
-import AdminSideNav from "@/components/ui/AdminSideNav";
-import "@/styles/main.css";
-import BreadCrumbs from "@/components/ui/BreadCrumbs";
+// ** Core
 import Link from "next/link";
-import Providers from "@/Providers";
-import { useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
-import SideNavMenu from "@/components/sections/SideNavMenu";
 
+// ** Fonts
+import { Catamaran, Montserrat } from "next/font/google";
 const catamaran = Catamaran({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
+
+// ** Style
+import "@/styles/main.css";
+
+// ** Components
+import AdminSideNav from "@/components/ui/AdminSideNav";
+import BreadCrumbs from "@/components/ui/BreadCrumbs";
+import SideNavMenu from "@/components/sections/SideNavMenu";
+
+// ** Providers
+import Providers from "@/Providers";
+
+// ** Auth
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const session = await getServerSession(authOptions);

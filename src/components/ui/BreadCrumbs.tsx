@@ -1,8 +1,12 @@
 "use client";
+// ** Core
 import { usePathname } from "next/navigation";
+
+// ** Store
 import { useProductStore } from "@/store";
 
 export default function BreadCrumbs() {
+	// ** Hooks
 	const fullLocation = usePathname();
 	const products = useProductStore((state) => state.products);
 

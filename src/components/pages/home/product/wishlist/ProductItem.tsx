@@ -1,18 +1,31 @@
+// ** Core
+import React from "react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useCartStore, useWishlistStore } from "@/store";
-import { useCookies } from "react-cookie";
-import { numberWithDot } from "@/utils/numberDotSeparator";
 import Link from "next/link";
 
+// ** Stores
+import { useWishlistStore } from "@/store";
+
+// ** Cookies
+import { useCookies } from "react-cookie";
+
+// ** Utils
+import { numberWithDot } from "@/utils/numberDotSeparator";
+
+// ** Types
 import { ProductType } from "@/store/productStore";
 
 const ProductItem = ({ product }: { product: ProductType }) => {
+	// ** Hooks
 	const removeProduct = useWishlistStore((state) => state.remove);
+
+	// ** States
 	const [cookies, setCookie] = useCookies<string>(["wishlistProducts"]);
 
+	// ** Vars
 	let wishProducts: number[] = cookies.wishlistProducts;
 
+	// ** Handlers
 	const removeProductHandler = () => {
 		removeProduct(product.id);
 		removeProductFromCookie();

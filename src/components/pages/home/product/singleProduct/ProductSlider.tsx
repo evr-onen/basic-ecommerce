@@ -1,18 +1,21 @@
-import { ProductType } from "@/store/productStore";
-import Image from "next/image";
+// ** Core
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+
+// ** LightBox
 import Lightbox, { ImagesListType } from "react-spring-lightbox";
 
-type ImagesType = {
-	src: string;
-	loading: string;
-	alt: string;
-};
+// ** Types
+import { ProductType } from "@/store/productStore";
+
+// ** Vars
 let images: ImagesListType = [];
 const ProductSlider = ({ product }: { product: ProductType }) => {
+	// ** States
 	const [currentImageIndex, setCurrentIndex] = useState(0);
 	const [isOpen, setIsOpen] = useState(false);
 
+	// get ready images for slide
 	useEffect(() => {
 		product?.images.map((image) => {
 			images.push({
@@ -23,6 +26,7 @@ const ProductSlider = ({ product }: { product: ProductType }) => {
 		});
 	}, [product]);
 
+	// ** Handlers
 	const gotoPrevious = () => currentImageIndex > 0 && setCurrentIndex(currentImageIndex - 1);
 
 	const gotoNext = () => currentImageIndex + 1 < images.length && setCurrentIndex(currentImageIndex + 1);

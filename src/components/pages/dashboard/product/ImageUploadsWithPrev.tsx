@@ -1,9 +1,17 @@
-import axios from "axios";
+// ** Core
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
-import { useProductStore } from "@/store";
 import { useRouter } from "next/navigation";
+
+// ** fetch
+import axios from "axios";
+
+// ** Store
+import { useProductStore } from "@/store";
+
 // ** Types
+type OptionType = { id: number; label: string };
+type ErrorObjType = { [key: string]: { key: string; error: string } };
 interface PropsType {
 	data: DataType;
 	errorHandler: (errorData: ErrorObjType) => void;
@@ -16,16 +24,15 @@ type DataType = {
 	quantity: number;
 	category: OptionType;
 };
-type OptionType = { id: number; label: string };
-
-type ErrorObjType = { [key: string]: { key: string; error: string } };
 
 export const ImageUploadsWithPrev = (props: PropsType) => {
 	const { data, errorHandler, imageUrl, productId } = props;
 
+	// ** States
 	const [imageFiles, setImageFiles] = useState<File[]>([]);
 	const [imageUrls, setImageUrls] = useState<string[]>(imageUrl!);
 
+	// ** Handlers
 	const resetImagesHandler = () => {
 		setImageFiles([]);
 		setImageUrls([]);
@@ -42,7 +49,6 @@ export const ImageUploadsWithPrev = (props: PropsType) => {
 		const newFiles = Array.from(fileInput.files);
 		setImageFiles(newFiles);
 
-		// Optional: Generate preview URLs for each selected image
 		const newUrls = newFiles.map((file) => URL.createObjectURL(file));
 		setImageUrls(newUrls);
 	};
@@ -105,25 +111,25 @@ export const ImageUploadsWithPrev = (props: PropsType) => {
 	);
 };
 
-export const ImageUploadsWithPrevBtn = ({
-	imageFiles,
-	data,
-	errorHandler,
-	productId,
-	imageUrls,
-	resetImagesHandler,
-}: {
+// ** propsType
+type ImageUploadsWithPrevBtnPropsType = {
 	imageFiles: File[];
 	data: DataType;
 	errorHandler: (errorData: ErrorObjType) => void;
 	productId?: string;
 	imageUrls: string[];
 	resetImagesHandler: () => void;
-}) => {
+};
+export const ImageUploadsWithPrevBtn = (props: ImageUploadsWithPrevBtnPropsType) => {
+	const { imageFiles, data, errorHandler, productId, imageUrls, resetImagesHandler } = props;
+
+	// ** Store
 	const productStore = useProductStore((state) => state);
 
+	// ** Hooks
 	const router = useRouter();
 
+	// ** Validate Control Function
 	const validationControl = (validateData: any) => {
 		let validationObj: { [key: string]: { key: string; error: string } } = {};
 		let index: number = 0;
@@ -138,7 +144,7 @@ export const ImageUploadsWithPrevBtn = ({
 		}
 		return validationObj;
 	};
-
+	// ** Handlers
 	const handleUpload = async () => {
 		if (Object.keys(validationControl(data)).length === 0) {
 			const formData = new FormData();
