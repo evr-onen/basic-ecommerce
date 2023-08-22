@@ -1,22 +1,31 @@
 "use client";
+// ** Core
 import React, { useEffect, useState } from "react";
+
+// ** Store
 import { useCartStore } from "@/store";
-import Image from "next/image";
-import NumberInput from "@/components/ui/html/NumberInput";
+
+// ** Components
 import ProductItem from "@/components/pages/home/product/cart/ProductItem";
+
+// ** Utils
 import { numberWithDot } from "@/utils/numberDotSeparator";
+
 const Page = () => {
+	// ** Hooks
 	const cartProductsState = useCartStore((state) => state.cartProducts);
 
+	// ** States
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [count, setCount] = useState(0);
 
+	// ** Renders
 	const renderCartItem = () => {
 		return cartProductsState.map((product) => {
 			return <ProductItem key={product.id} product={product} trigger={countHandler} />;
 		});
 	};
-
+	// ** geting total Price
 	const getTotalPrice = () => {
 		let tmpTotal = 0;
 		cartProductsState.map((productItem) => {

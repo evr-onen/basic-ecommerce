@@ -1,27 +1,39 @@
-import NumberInput from "@/components/ui/html/NumberInput";
-import { CartProductsType } from "@/store/cartStore";
-import Image from "next/image";
+// ** Core
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+// Reusable Components
+import NumberInput from "@/components/ui/html/NumberInput";
+
+// ** Store
 import { useCartStore } from "@/store/cartStore";
 import { useCookies } from "react-cookie";
+
+// ** Utils
 import { numberWithDot } from "@/utils/numberDotSeparator";
-import Link from "next/link";
+
+// ** Types
+import { CartProductsType } from "@/store/cartStore";
 type CartItemsType = {
 	id: number;
 	quantity: number;
 };
 
 const ProductItem = ({ product, trigger }: { product: CartProductsType; trigger: () => void }) => {
+	// ** States
 	const [productCount, setProductCount] = useState(product.cartQuantity);
 
-	const allCarts = useCartStore((state) => state.cartProducts);
+	// ** Hooks
 	const removeCart = useCartStore((state) => state.remove);
 	const updateCart = useCartStore((state) => state.update);
 	const [cookies, setCookie] = useCookies<string>(["cart"]);
 
+	// ** Vars
 	let cartItems: CartItemsType[] = cookies.cart;
 	let productIndex = cartItems.findIndex((item) => item.id === product.id);
 
+	// ** Handlers
 	const removeProductHandler = () => {
 		removeCart(product.id);
 		removeProductFromCookie();

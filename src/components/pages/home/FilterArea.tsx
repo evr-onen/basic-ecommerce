@@ -1,23 +1,34 @@
 "use client";
 
-import Modal from "@/components/ui/Modal";
-import QuickLook from "@/components/ui/QuickLook";
-import { ProductType } from "@/store/productStore";
+// ** Core
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+
+// ** Reusable Components
+import Modal from "@/components/ui/Modal";
+
+// ** Components
+import QuickLook from "@/components/ui/QuickLook";
+
+// ** Store
+import { ProductType } from "@/store/productStore";
 import { useWishlistStore } from "@/store";
 
 let usedCategories: string[] = [];
 const FilterArea = ({ products }: { products: ProductType[] }) => {
+	// ** States
 	const [isOpen, setIsOpen] = useState(false);
 	const [productItem, setProductItem] = useState<ProductType | null>(null);
-	const wishListState = useWishlistStore((state) => state.list);
 	const [filterByCat, setFilterByCat] = useState<string>("");
 	const [filterCats, setfilterCats] = useState<string[]>([]);
+
+	// ** Hooks
+	const wishListState = useWishlistStore((state) => state.list);
 	const { push } = useRouter();
 
+	// ** Handlers
 	const clickHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>, productId: number) => {
 		const target = e.target as HTMLElement;
 

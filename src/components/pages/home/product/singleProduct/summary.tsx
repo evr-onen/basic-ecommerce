@@ -1,8 +1,16 @@
-import NumberInput from "@/components/ui/html/NumberInput";
-import { ProductType } from "@/store/productStore";
+// ** Core
 import React, { useEffect, useState } from "react";
+
+// ** Reusable Components
+import NumberInput from "@/components/ui/html/NumberInput";
+
+// ** Cookies
 import { useCookies } from "react-cookie";
+
+// ** Store
 import { useWishlistStore, useCartStore } from "@/store";
+
+// ** Vars
 let wishlist: number[] = [];
 let cartProducts: CartProductsType[] = [];
 
@@ -10,17 +18,22 @@ type CartProductsType = {
 	id: number;
 	quantity: number;
 };
+// ** Types
+import { ProductType } from "@/store/productStore";
 
 const Summary = ({ product }: { product: ProductType }) => {
-	const [quantity, setQuantity] = useState(1);
+	// ** Hooks
 	const [cookies, setCookie, removeCookie] = useCookies<string>(["wishlistProducts", "cart"]);
 	const wishlistState = useWishlistStore((state) => state.list);
-	const [isWished, setIsWished] = useState(wishlistState.includes(product?.id));
 	const wishlistReset = useWishlistStore((state) => state.reset);
-	const cartProductsState = useCartStore((state) => state.cartProducts);
 	const addCartProducts = useCartStore((state) => state.add);
 	const updateCartProducts = useCartStore((state) => state.update);
 
+	// ** State
+	const [quantity, setQuantity] = useState(1);
+	const [isWished, setIsWished] = useState(wishlistState.includes(product?.id));
+
+	// ** Handlers
 	const setCookieWishlistHandler = () => {
 		if (!wishlist.includes(product.id)) {
 			wishlist.push(product.id);
@@ -61,7 +74,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 			});
 		}
 	};
-
+	// ** Get cookies when page open or change cookie
 	useEffect(() => {
 		if (!!cookies.wishlistProducts) {
 			wishlist = cookies.wishlistProducts;

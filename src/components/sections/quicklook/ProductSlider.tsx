@@ -1,15 +1,16 @@
-import { ProductType } from "@/store/productStore";
-import Image from "next/image";
+// ** Core
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+
+// ** Types
+import { ProductType } from "@/store/productStore";
+
+// ** LightBox
 import Lightbox, { ImagesListType } from "react-spring-lightbox";
 
-type ImagesType = {
-	src: string;
-	loading: string;
-	alt: string;
-};
 let images: ImagesListType = [];
 const ProductSlider = ({ product }: { product: ProductType | null }) => {
+	// ** States
 	const [currentImageIndex, setCurrentIndex] = useState(0);
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -23,6 +24,7 @@ const ProductSlider = ({ product }: { product: ProductType | null }) => {
 		});
 	}, [product]);
 
+	//  ** Handlers
 	const gotoPrevious = () => currentImageIndex > 0 && setCurrentIndex(currentImageIndex - 1);
 
 	const gotoNext = () => currentImageIndex + 1 < images.length && setCurrentIndex(currentImageIndex + 1);
@@ -37,7 +39,7 @@ const ProductSlider = ({ product }: { product: ProductType | null }) => {
 	};
 	if (product) {
 		return (
-			<div className="sliderArea flex">
+			<div className="sliderArea flex ">
 				<div className="slide   h-[530px] w-[530px] relative" onClick={() => openHandler(0)}>
 					<Image
 						src={product?.images[0]}

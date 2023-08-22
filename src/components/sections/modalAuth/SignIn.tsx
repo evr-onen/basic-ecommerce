@@ -1,13 +1,20 @@
+// ** Core
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
+// ** Next-Auth
+import { signIn } from "next-auth/react";
+
 const SignIn = () => {
+	// ** States
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [errMessage, setErrMessage] = useState<string | null>(null);
 
+	// ** Hooks
 	const router = useRouter();
 
+	// ** Handlers
 	const handleSignIn = async () => {
 		try {
 			const response = await signIn("credentials", {

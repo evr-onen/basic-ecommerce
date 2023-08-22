@@ -1,14 +1,19 @@
 "use client";
+// ** Cores
 import React, { useEffect, useState } from "react";
+
+// ** Stores
 import { useWishlistStore, useProductStore } from "@/store";
 
+// ** Components
 import ProductItem from "@/components/pages/home/product/wishlist/ProductItem";
 
 const Page = () => {
+	// ** Hooks
 	const allWishlist = useWishlistStore((state) => state.list);
 	const allProducts = useProductStore((state) => state.products);
 
-	console.log(allWishlist);
+	// ** Renders
 	const renderCartItem = () => {
 		return allWishlist.map((productId) => {
 			let productIndex = allProducts.findIndex((item) => item.id === productId);

@@ -1,34 +1,40 @@
 "use client";
+// ** Core
 import { useEffect, useState } from "react";
-
-import { mainHeaderNavPages } from "@/constants/mainHeader";
-import { mainHeaderNavPageType } from "@/types/constants";
 import Link from "next/link";
-import Modal from "@/components/ui/Modal";
-import TextInput from "../ui/html/TextInput";
-import ModalAuth from "./modalAuth/ModalAuth";
-import { useWishlistStore, useCartStore, useProductStore } from "@/store";
-import { useSession } from "next-auth/react";
-import { useCookies } from "react-cookie";
 import Image from "next/image";
+
+// ** components
+import Modal from "@/components/ui/Modal";
+import ModalAuth from "./modalAuth/ModalAuth";
 import Search from "../ui/search";
 
+// ** Constant
+import { mainHeaderNavPages } from "@/constants/mainHeader";
+
+// ** Store
+import { useWishlistStore, useCartStore, useProductStore } from "@/store";
+
+// ** Auth
+import { useSession } from "next-auth/react";
+
+// ** Cookie
+import { useCookies } from "react-cookie";
+
+// ** Vars
 let wishlist: number[] = [];
 let tmp: number[] | [] = [];
 let cartProducts: CartProductsType[] = [];
 
+// ** Types
+import { mainHeaderNavPageType } from "@/types/constants";
 type CartProductsType = {
 	id: number;
 	quantity: number;
 };
 
 const MainHeader = ({ children }: { children?: React.ReactNode }) => {
-	const [isOpen, setIsOpen] = useState(false);
-	const [hoverPageQuantity, setHoverPageQuantity] = useState<number[] | []>([]);
-	const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-	const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-
-	const { data: session, status } = useSession();
+	// ** Hooks
 	const wishlistState = useWishlistStore((state) => state.list);
 	const resetWishlist = useWishlistStore((state) => state.reset);
 	const productsState = useProductStore((state) => state.products);
@@ -36,7 +42,15 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 	const addCartProducts = useCartStore((state) => state.add);
 	const removeProductsState = useCartStore((state) => state.remove);
 
+	const { data: session, status } = useSession();
+
 	const [cookies, setCookie, removeCookie] = useCookies<string>(["wishlistProducts", "cart"]);
+
+	// ** States
+	const [isOpen, setIsOpen] = useState(false);
+	const [hoverPageQuantity, setHoverPageQuantity] = useState<number[] | []>([]);
+	const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+	const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		mainHeaderNavPages.map((item) => {
@@ -53,7 +67,7 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 		}
 		resetWishlist(wishlist);
 	}, [cookies.wishlistProducts]);
-	console.log(status);
+
 	useEffect(() => {
 		cartProducts = [];
 		if (!!cookies.cart) {
@@ -76,6 +90,7 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 			}
 		});
 	}, []);
+
 	const removeCartItem = (id: number) => {
 		removeProductsState(id);
 		cartProducts = cookies.cart;
@@ -83,6 +98,7 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 		console.log(cartProducts);
 		setCookie("cart", cartProducts, { path: "/" });
 	};
+
 	const renderPageNav = () => {
 		return (
 			<div className="mainHeaderPageNav md:block hidden">

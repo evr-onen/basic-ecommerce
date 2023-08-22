@@ -1,19 +1,27 @@
 "use client";
+
+// ** Core
+import React, { useEffect, useState } from "react";
+
+// ** Reusable Comps
 import SelectInput from "@/components/ui/html/SelectInput";
 import TextInput from "@/components/ui/html/TextInput";
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { categories } from "@/constants/product";
-import { NextApiResponse } from "next";
-import { NextApiRequest } from "next";
-import axios from "axios";
-import ImageUploadsWithPrev from "@/components/pages/dashboard/product/ImageUploadsWithPrev";
-import { useProductStore } from "@/store";
-type OptionType = { id: number; label: string };
 
+// ** Constants
+import { categories } from "@/constants/product";
+
+// ** Store
+import { useProductStore } from "@/store";
+
+// ** Components
+import ImageUploadsWithPrev from "@/components/pages/dashboard/product/ImageUploadsWithPrev";
+
+// ** Types
+type OptionType = { id: number; label: string };
 type ErrorObjType = { [key: string]: { key: string; error: string } };
+
 const Page = () => {
-	const { data: session, status } = useSession();
+	// ** States
 	const [productName, setProductName] = useState("");
 	const [price, setPrice] = useState("");
 	const [quantity, setQuantity] = useState<string>("");
@@ -21,11 +29,15 @@ const Page = () => {
 	const [catOptions, setCatOptions] = useState<OptionType[] | []>(categories);
 	const [errors, SetErrors] = useState<ErrorObjType>();
 
+	// ** Store
 	const products = useProductStore((state) => state.products);
 
+	// ** Handlers
 	const errorHandler = (errorData: ErrorObjType) => {
 		SetErrors(errorData);
 	};
+
+	// ** Reset
 	useEffect(() => {
 		setProductName("");
 		setPrice("");

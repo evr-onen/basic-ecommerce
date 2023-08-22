@@ -1,15 +1,21 @@
 "use client";
-import TextInput from "@/components/ui/html/TextInput";
+// ** Core
+import React, { useRef, useState } from "react";
 import Link from "next/link";
-import React, { useRef, useEffect, useState } from "react";
+
+// ** Reusable Components
+import TextInput from "@/components/ui/html/TextInput";
 
 const Page = () => {
 	const ref = useRef(null);
+
+	// ** States
 	const [username, setUsername] = useState("John");
 	const [lastName, setLastName] = useState("Doe");
 	const [password, setPassword] = useState("");
 	const [passwordConf, setPasswordConf] = useState("");
 
+	// ** Handler
 	const submitHandler = () => {
 		if (password === passwordConf && password !== "") {
 		} else {

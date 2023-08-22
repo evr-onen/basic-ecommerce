@@ -1,9 +1,15 @@
+// ** Core
+import Image from "next/image";
+
+// ** Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
-import Image from "next/image";
+
+// ** constants
 import { sliderImages } from "@/constants/home";
+
 const MainPageSlider = () => {
 	const renderSwiperSlide = () => {
 		return sliderImages.map((slide, i) => {
