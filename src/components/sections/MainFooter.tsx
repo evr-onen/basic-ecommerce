@@ -55,7 +55,7 @@ const MainFooter = () => {
 
 	return (
 		<div id="mainFooter" className="">
-			<div className="top">{renderFooterPages()}</div>
+			<div className="top p-4">{renderFooterPages()}</div>
 			<div className="bottom flex justify-between w-full max-w-[1240px] pb-4">
 				<div className="left ml-4 xl:ml-0">
 					<Link href={"/"}>© 2021 Qode Interactive, All Rights Reserved</Link>

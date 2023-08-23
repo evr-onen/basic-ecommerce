@@ -115,7 +115,10 @@ const Summary = ({ product }: { product: ProductType }) => {
 					<p className="uppercase m-auto ">Add To Cart</p>
 				</div>
 			</div>
-			<div className="btnWishList mt-4 flex border border-black hover:border-black/40 duration-300 w-fit h-12 justify-center items-center px-4 cursor-pointer">
+			<div
+				className="btnWishList mt-4 flex border border-black hover:border-black/40 duration-300 w-fit h-12 justify-center items-center px-4 cursor-pointer"
+				onClick={setCookieWishlistHandler}
+			>
 				{isWished ? (
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -131,7 +134,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 						/>
 					</svg>
 				)}
-				<span className="ml-1 my-auto text-black " onClick={setCookieWishlistHandler}>
+				<span className="ml-1 my-auto text-black ">
 					<p>{isWished ? "Remove From " : "Add To "} WishList</p>
 				</span>
 			</div>

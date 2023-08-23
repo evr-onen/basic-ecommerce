@@ -61,8 +61,8 @@ const ProductList = ({ products }: { products: ProductType[] }) => {
 					<div className="price w-[15%] border-r border-r-bodyPrimary h-auto flex">
 						<p className=" font-semibold text-[8px] sm:text-xs lg:text-sm m-auto">{product.price + " TL"}</p>
 					</div>
-					<div className="quantity w-[15%] border-r border-r-bodyPrimary h-auto flex">
-						<p className=" font-semibold text-[8px] sm:text-xs lg:text-sm m-auto flex-wrap mx-2 flex text-center">
+					<div className="quantity w-[15%] border-r border-r-bodyPrimary h-auto flex justify-center">
+						<p className=" font-semibold text-[8px] sm:text-xs lg:text-sm m-auto flex-wrap mx-2 flex text-center ">
 							{product.quantity + " pieces"}
 						</p>
 					</div>

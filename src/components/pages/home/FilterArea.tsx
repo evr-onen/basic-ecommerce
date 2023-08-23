@@ -15,8 +15,20 @@ import QuickLook from "@/components/ui/QuickLook";
 // ** Store
 import { ProductType } from "@/store/productStore";
 import { useWishlistStore } from "@/store";
+import { useCartStore } from "@/store";
 
+// ** Cookies
+import { useCookies } from "react-cookie";
+
+// ** Types
+type CartCookieType = {
+	id: number;
+	quantity: number;
+};
+
+// ** Vars
 let usedCategories: string[] = [];
+
 const FilterArea = ({ products }: { products: ProductType[] }) => {
 	// ** States
 	const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +38,12 @@ const FilterArea = ({ products }: { products: ProductType[] }) => {
 
 	// ** Hooks
 	const wishListState = useWishlistStore((state) => state.list);
+	const addToCart = useCartStore((state) => state.add);
 	const { push } = useRouter();
+	const [cookies, setCookie, removeCookie] = useCookies<string>(["cart"]);
+
+	// ** Vars
+	let cartProducts: CartCookieType[] = cookies.cart || [];
 
 	// ** Handlers
 	const clickHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>, productId: number) => {
@@ -43,6 +60,23 @@ const FilterArea = ({ products }: { products: ProductType[] }) => {
 	useEffect(() => {
 		setfilterCats(usedCategories);
 	}, [usedCategories.length]);
+
+	const addToCartHandler = (id: number) => {
+		let productIndex = cartProducts?.findIndex((cartItem) => cartItem.id === id);
+		let indexInProducts = products?.findIndex((cartItem) => cartItem.id === id);
+		if (productIndex === -1) {
+			cartProducts.push({ id, quantity: 1 });
+			setCookie("cart", cartProducts, { path: "/" });
+			addToCart({
+				id: id,
+				name: products[indexInProducts].name,
+				category: products[indexInProducts].category.label,
+				price: products[indexInProducts].price,
+				cartQuantity: 1,
+				images: products[indexInProducts].images,
+			});
+		}
+	};
 
 	const renderProductItems = () => {
 		usedCategories = [];
@@ -99,7 +133,10 @@ const FilterArea = ({ products }: { products: ProductType[] }) => {
 								{productItem.name}
 							</Link>
 							<div className="price  flex  relative overflow-hidden mt-2">
-								<p className="relative -left-full duration-700 text-center m-auto opacity-0 invisible text-xs font-bold text-black/50 uppercase">
+								<p
+									className="relative -left-full cursor-pointer duration-700 text-center m-auto opacity-0 invisible text-xs font-bold text-black/50 uppercase"
+									onClick={() => addToCartHandler(productItem.id)}
+								>
 									Add to Cart
 								</p>
 

@@ -1,21 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useProductStore } from "@/store";
-import { useWishlistStore } from "@/store";
-import { ProductType } from "@/store/productStore";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+// ** Store
+import { useProductStore, useWishlistStore } from "@/store";
+
+// ** Types
+import { ProductType } from "@/store/productStore";
+
 const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatch<React.SetStateAction<boolean>> }) => {
-	const [value, setValue] = useState("");
+	// ** Hooks
 	const allProducts = useProductStore((state) => state.products);
 	const wishlistStore = useWishlistStore((state) => state.list);
+	const router = useRouter();
+
+	// ** States
+	const [value, setValue] = useState("");
 	const [filterdProducts, setFilteredProducts] = useState<ProductType[]>(allProducts);
 
 	const inputref = useRef<HTMLInputElement>(null);
-	const router = useRouter();
+
+	// ** Vars
 	let tmpAllProducts: ProductType[] = allProducts;
 
+	// ** Render
 	const renderProductItems = (productItem: ProductType) => {
 		return (
 			<div
@@ -65,19 +74,19 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 						</div>
 					</div>
 				</div>
-				<div className="des flex flex-col items-center mt-4">
-					<Link href={`product/${productItem.id}`} className="title text-lg">
+				<div className="des flex flex-col items-center mt-4 font-bold">
+					<Link
+						href={`/product/${productItem.id}`}
+						// href={`http://localhost:3000/product/${productItem.id}`}
+						className="title text-lg capitalize"
+						onClick={() => onChange(false)}
+					>
 						{productItem.name}
 					</Link>
-					<div className="price  flex  relative overflow-hidden mt-2">
-						<p className="relative -left-full duration-700 text-center m-auto opacity-0 invisible text-xs font-bold text-black/50 uppercase">
-							Add to Cart
-						</p>
 
-						<span className="relative  duration-700 flex pb-8 -left-1/2 translate-x-1/2  font-bold opacity-100 visible text-xs text-black/50">
-							<p className="mr-3">{productItem.price}</p>TL
-						</span>
-					</div>
+					<p className="pb-4 text-center  font-bold text-xs text-error capitalize">{productItem.category.label}</p>
+
+					<p className="pb-4 font-bold   text-lg text-black/50">{productItem.price + " TL"}</p>
 				</div>
 			</div>
 		);
@@ -96,6 +105,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 		}
 	};
 
+	// ** Handler
 	const overlayCloseHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		let target = e.target as HTMLElement;
 		if (target.classList[0] === "searchOverlay") {
@@ -105,7 +115,6 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 	};
 
 	useEffect(() => {
-		console.log(inputref?.current);
 		setTimeout(() => {
 			inputref?.current?.focus();
 		}, 50);
@@ -113,7 +122,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 
 	return (
 		<div
-			className={`searchOverlay fixed left-0 top-0 right-0 bottom-0 bg-black/60 duration-500 flex flex-col items-center ${
+			className={`searchOverlay fixed left-0 top-0 right-0 bottom-0 bg-black duration-500 flex flex-col items-center ${
 				isOpen ? "opacity-100 visible" : "opacity-0 invisible"
 			}`}
 			onClick={(e) => overlayCloseHandler(e)}
@@ -129,7 +138,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 				/>
 			</div>
 
-			<div id="searchProductItems" className="mt-40  flex overflow-x-auto w-[80%]  flex-wrap justify-center bg-black ">
+			<div id="searchProductItems" className="mt-40  flex    flex-wrap justify-center  min-w-fit bg-opacity-0">
 				{renderSearchResult()}
 			</div>
 		</div>
