@@ -66,5 +66,6 @@ const TextInput = forwardRef<HTMLInputElement, PropsType>((props: PropsType, ref
 		</div>
 	);
 });
+TextInput.displayName = "TextInput";
 
 export default TextInput;
