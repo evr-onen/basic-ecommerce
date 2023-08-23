@@ -50,5 +50,4 @@ const NumberInput = (props: PropsType) => {
 		</div>
 	);
 };
-
 export default NumberInput;

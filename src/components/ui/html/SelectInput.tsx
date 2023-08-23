@@ -50,5 +50,5 @@ const SelectInput = forwardRef<HTMLDivElement, PropsType>((props: PropsType, ref
 		</div>
 	);
 });
-
+SelectInput.displayName = "SelectInput";
 export default SelectInput;
