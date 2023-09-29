@@ -109,10 +109,10 @@ const Summary = ({ product }: { product: ProductType }) => {
 			<div className="mt-4 flex">
 				<NumberInput value={quantity} onChange={setQuantity} />
 				<div
-					className="btn ml-4 bg-black hover:bg-black/80 h-12 text-bodyPrimary flex px-12 cursor-pointer"
+					className="btn ml-4 bg-black hover:bg-black/80 h-12 text-bodyPrimary flex px-12 whitespace-nowrap cursor-pointer"
 					onClick={setCookieAddCartHandler}
 				>
-					<p className="uppercase m-auto ">Add To Cart</p>
+					<p className="uppercase my-auto w-full block">Add To Cart</p>
 				</div>
 			</div>
 			<div
