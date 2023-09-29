@@ -7,8 +7,8 @@ import { signIn } from "next-auth/react";
 
 const SignIn = () => {
 	// ** States
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("admin");
+	const [password, setPassword] = useState("1234");
 	const [errMessage, setErrMessage] = useState<string | null>(null);
 
 	// ** Hooks
@@ -45,10 +45,11 @@ const SignIn = () => {
 					onChange={(e) => setUsername(e.target.value)}
 				/>
 			</div>
+
 			<div className="password mt-4">
 				<input
 					className="authInput"
-					type="text"
+					type="password"
 					placeholder="Password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
