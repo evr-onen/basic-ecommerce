@@ -58,7 +58,7 @@ const ProductItem = ({ product, trigger }: { product: CartProductsType; trigger:
 	}, [productCount]);
 
 	return (
-		<div className="productItem flex w-full mt-4 items-center border-b border-black/40 md:p-4 p-6">
+		<div className="productItem flex w-full mt-4 items-center border-b border-black/40 md:p-4 p-0">
 			<span
 				onClick={removeProductHandler}
 				className="cursor-pointer hover:bg-black/10 w-8 h-8 rounded-full flex items-center justify-center mr-4"
@@ -66,7 +66,7 @@ const ProductItem = ({ product, trigger }: { product: CartProductsType; trigger:
 				x
 			</span>
 			<div className="itemContent flex justify-around items-center w-full ">
-				<div className="imageWrapper max-w-24 flex-1">
+				<div className="imageWrapper max-w-24 flex-1 hidden sm:block">
 					<Image
 						src={product.images[0]}
 						className={`thumb`}

@@ -10,7 +10,7 @@ import { ProductType } from "@/store/productStore";
 const QuickLook = ({ product }: { product: ProductType }) => {
 	return (
 		<div className="">
-			<div className="flex  ">
+			<div className="flex flex-wrap  ">
 				<Slider product={product} />
 				<Summary product={product} />
 			</div>
