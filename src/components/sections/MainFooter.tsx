@@ -13,7 +13,7 @@ const MainFooter = () => {
 			<ul className="flex flex-col items-center md:flex-row md:items-start md:justify-center ">
 				{mainFooterPages.map((pagesItem: mainFooterPagesType) => {
 					return (
-						<li key={pagesItem.pageType}>
+						<li className="text-center" key={pagesItem.pageType}>
 							{pagesItem.pageType}
 							{pagesItem.pages.length > 0 && (
 								<div>
@@ -37,7 +37,7 @@ const MainFooter = () => {
 															strokeLinejoin="round"
 														/>
 													</svg>
-													<Link href={pageItem.href} className="ml-4 md:ml-0">
+													<Link href={pageItem.href} className="ml-8 md:ml-0">
 														{pageItem.label}
 													</Link>
 												</li>

@@ -93,7 +93,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 	}, [cookies.cart]);
 
 	return (
-		<div className=" h-auto   pl-20 pt-4">
+		<div className=" w-[530px] h-auto pl-20 pt-4">
 			<div className="top mb-8">
 				<h2 className="uppercase tracking-widest font-bold ">{product?.name}</h2>
 				<h4>{product?.category?.label}</h4>

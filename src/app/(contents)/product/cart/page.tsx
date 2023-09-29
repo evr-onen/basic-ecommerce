@@ -54,7 +54,7 @@ const Page = () => {
 			<div className="flex flex-col max-w-[1240px] w-full">
 				<h1 className="text-center">Cart</h1>
 				<div className="flex flex-col lg:flex-row w-full items-center xs:items-end lg:items-start ">
-					<div className="left w-[825px]  min-h-[40vh]  mr-12">{renderCartItem()}</div>
+					<div className="left max-w-[825px] w-full px-2  md:min-h-[40vh]  sm:mr-12 mr-4">{renderCartItem()}</div>
 					<div className="right bg-bodyPrimary mt-8 lg:mt-0 w-[415px]  p-8">
 						<h2 className="uppercase mb-8 font-bold">Cart Totals</h2>
 						<div className="w-full flex">

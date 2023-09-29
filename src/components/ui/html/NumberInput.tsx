@@ -24,9 +24,8 @@ const NumberInput = (props: PropsType) => {
 		onChange(newValue);
 		setInputValues(newValue);
 	};
-	console.log(value);
 	return (
-		<div className="numberInput flex">
+		<div className="numberInput flex mx-6">
 			<div
 				style={size === "sm" ? { width: "2rem", height: "2rem" } : { width: "3rem", height: "3rem" }}
 				className="minus prevent-select mr-2 w-12 h-12 bg-black  text-bodyPrimary flex cursor-pointer hover:bg-black/80"
@@ -35,7 +34,7 @@ const NumberInput = (props: PropsType) => {
 				<p className="m-auto">-</p>
 			</div>
 			<input
-				className="w-12 text-center"
+				className="sm:w-12 w-6 text-center "
 				type="number"
 				value={inputValue.toString()}
 				onChange={(e) => changeHandler(e)}
