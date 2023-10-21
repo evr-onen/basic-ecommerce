@@ -16,7 +16,7 @@ export default function BreadCrumbs() {
 			<ol role="list" className="flex space-x-4 rounded-md bg-white ">
 				<li className="flex">
 					<div className="flex items-center">
-						<a href="#" className="text-gray-400 hover:text-gray-500">
+						<a href="/" className="text-gray-400 hover:text-gray-500">
 							<svg
 								className="h-5 w-5 flex-shrink-0"
 								aria-hidden="true"

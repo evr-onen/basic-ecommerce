@@ -105,53 +105,62 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 				<ul>
 					{mainHeaderNavPages.map((mainHeaderNavPage: mainHeaderNavPageType, index: number) => {
 						return (
-							<li
-								key={mainHeaderNavPage.pageType}
-								onMouseEnter={() => setHoverIndex(index)}
-								onMouseLeave={() => setHoverIndex(null)}
-							>
-								<p className="">{mainHeaderNavPage.pageType}</p>
-								{mainHeaderNavPage.pages.length > 0 && (
-									<ul
-										style={
-											hoverIndex! !== null
-												? { height: hoverPageQuantity[hoverIndex!] * 24 + 32 + "px" }
-												: { height: "0" }
-										}
-									>
-										<div>
-											{mainHeaderNavPage.pages.map((pageItem) => (
-												<li key={pageItem.id} className="flex items-center">
-													<svg
-														width="24"
-														height="24"
-														viewBox="0 0 24 24"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<path
-															d="M4 12H20M20 12L14 6M20 12L14 18"
-															stroke="#fff"
-															strokeWidth="1.5"
-															strokeLinecap="round"
-															strokeLinejoin="round"
-														/>
-													</svg>
-													<Link href={pageItem.href}>{pageItem.label}</Link>
-												</li>
-											))}
-										</div>
-									</ul>
-								)}
-							</li>
+							<>
+								<li
+									key={mainHeaderNavPage.pageType}
+									onMouseEnter={() => setHoverIndex(index)}
+									onMouseLeave={() => setHoverIndex(null)}
+								>
+									<p className="">{mainHeaderNavPage.pageType}</p>
+									{mainHeaderNavPage.pages.length > 0 && (
+										<ul
+											style={
+												hoverIndex! !== null
+													? { height: hoverPageQuantity[hoverIndex!] * 24 + 32 + "px" }
+													: { height: "0" }
+											}
+										>
+											<div>
+												{mainHeaderNavPage.pages.map((pageItem) => (
+													<li key={pageItem.id} className="flex items-center">
+														<svg
+															width="24"
+															height="24"
+															viewBox="0 0 24 24"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path
+																d="M4 12H20M20 12L14 6M20 12L14 18"
+																stroke="#fff"
+																strokeWidth="1.5"
+																strokeLinecap="round"
+																strokeLinejoin="round"
+															/>
+														</svg>
+														<Link href={pageItem.href}>{pageItem.label}</Link>
+													</li>
+												))}
+											</div>
+										</ul>
+									)}
+								</li>
+							</>
 						);
 					})}
+					<li>
+						<Link className="m-auto" href={"/sign-in"}>
+							Sign-in
+						</Link>
+					</li>
 					{status === "authenticated" && (
-						<li>
-							<Link className="m-auto" href={"/dashboard/welcome"}>
-								Dashboard
-							</Link>
-						</li>
+						<>
+							<li>
+								<Link className="m-auto" href={"/dashboard/welcome"}>
+									Dashboard
+								</Link>
+							</li>
+						</>
 					)}
 				</ul>
 			</div>
