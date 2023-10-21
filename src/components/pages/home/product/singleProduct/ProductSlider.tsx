@@ -27,17 +27,10 @@ const ProductSlider = ({ product }: { product: ProductType }) => {
 	}, [product]);
 
 	// ** Handlers
-	const gotoPrevious = () => currentImageIndex > 0 && setCurrentIndex(currentImageIndex - 1);
-
-	const gotoNext = () => currentImageIndex + 1 < images.length && setCurrentIndex(currentImageIndex + 1);
 
 	const openHandler = (imageIndex: number) => {
 		setCurrentIndex(imageIndex);
 		setIsOpen(true);
-	};
-
-	const closeHandler = () => {
-		setIsOpen(false);
 	};
 
 	const renderThumbnails = () => {
@@ -66,9 +59,9 @@ const ProductSlider = ({ product }: { product: ProductType }) => {
 			<div className="tumbs  w-[100px]  grid-cols-1 gap-2 mr-4 content-between hidden md:grid">
 				{renderThumbnails()}
 			</div>
-			<div className="slide   h-[530px] w-[530px] relative" onClick={() => openHandler(0)}>
+			<div className="slide h-[530px] w-[530px] relative" onClick={() => openHandler(0)}>
 				<Image
-					src={product?.images[0]}
+					src={product?.images[currentImageIndex]}
 					className={`thumb`}
 					alt={product?.images[0]}
 					width={0}
@@ -81,27 +74,6 @@ const ProductSlider = ({ product }: { product: ProductType }) => {
 					}}
 				/>
 			</div>
-			<Lightbox
-				isOpen={isOpen}
-				onPrev={gotoPrevious}
-				onNext={gotoNext}
-				images={images}
-				currentIndex={currentImageIndex}
-				/* Add your own UI */
-				// renderHeader={() => (<CustomHeader />)}
-				// renderFooter={() => (<CustomFooter />)}
-				// renderPrevButton={() => <CustomLeftArrowButton />}
-				// renderNextButton={() => <CustomRightArrowButton />}
-				// renderImageOverlay={() => <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/80 z-1"></div>}
-				/* Handle closing */
-				onClose={closeHandler}
-				pageTransitionConfig={{
-					from: { transform: "scale(0.75)", opacity: 0 },
-					enter: { transform: "scale(1)", opacity: 1 },
-					leave: { transform: "scale(0.75)", opacity: 0 },
-					config: { mass: 1, tension: 320, friction: 32 },
-				}}
-			/>
 		</div>
 	);
 };

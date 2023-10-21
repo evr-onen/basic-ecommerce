@@ -30,7 +30,7 @@ const ProductList = ({ products }: { products: ProductType[] }) => {
 	const renderProductItems = () => {
 		return productsData.map((product: ProductType) => {
 			return (
-				<div key={product.id} className="row w-full flex border border-bodyPrimary">
+				<div key={product.id} className="row max-w-[800px] flex border border-bodyPrimary">
 					<div className="productName w-[50%] border-r border-r-bodyPrimary h-auto flex">
 						<div className="image w-2/5  lg:w-1/6 h-auto p-0 lg:p-2">
 							<Image
@@ -86,7 +86,7 @@ const ProductList = ({ products }: { products: ProductType[] }) => {
 		});
 	};
 	return (
-		<div className="flex flex-col w-full ">
+		<div className="flex flex-col max-w-[800px] ">
 			<div className="row w-full flex border border-bodyPrimary">
 				<div className="productName w-[50%] border-r border-r-bodyPrimary h-12 flex">
 					<p className="md:text-sm  sm:text-[10px] text-[8px] font-bold  m-auto">Product</p>
