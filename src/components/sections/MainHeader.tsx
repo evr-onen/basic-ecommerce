@@ -221,7 +221,7 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 
 	const openSearchHandler = () => {
 		setIsSearchOpen(true);
-		globalState.isSearchOpen;
+		
 		document.querySelector("body")!.style.overflow = "hidden";
 	};
 
