@@ -7,6 +7,7 @@ import { useWishlistStore, useProductStore } from "@/store";
 
 // ** Components
 import ProductItem from "@/components/pages/home/product/wishlist/ProductItem";
+import { ToastContainer } from "react-toastify";
 
 const Page = () => {
 	// ** Hooks
@@ -17,7 +18,7 @@ const Page = () => {
 	const renderCartItem = () => {
 		if (allWishlist.length === 0) {
 			return (
-				<div className="w-full h-[44vh] flex">
+				<div className="w-full h-[44vh] max-w-[1240px] flex">
 					<p className="m-auto font-bold tracking-widest">There is no product in Wishlist.</p>
 				</div>
 			);
@@ -29,7 +30,8 @@ const Page = () => {
 	};
 
 	return (
-		<div className="CartPage mt-[10vh]   max-w-[1240px] w-full ">
+		<div className="CartPage mt-[10vh] w-full max-w-[1240px]">
+			<ToastContainer autoClose={700} hideProgressBar={true} closeButton={true} />
 			<div className="flex flex-col h-full min-h-[39vh]">
 				<h1 className="text-center md:text-left xl:pl-0 md:pl-8 pl-0">Wishlist</h1>
 				<div className="flex justify-center h-full">

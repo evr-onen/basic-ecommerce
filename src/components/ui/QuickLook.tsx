@@ -7,12 +7,13 @@ import Summary from "@/components/sections/quicklook/summary";
 
 // ** Type
 import { ProductType } from "@/store/productStore";
-const QuickLook = ({ product }: { product: ProductType }) => {
+
+const QuickLook = ({ product, closeHandler }: { product: ProductType; closeHandler: () => void }) => {
 	return (
 		<div className="">
 			<div className="flex flex-wrap  ">
 				<Slider product={product} />
-				<Summary product={product} />
+				<Summary product={product} closeHandler={closeHandler} />
 			</div>
 		</div>
 	);

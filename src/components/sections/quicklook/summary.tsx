@@ -14,6 +14,9 @@ import { useWishlistStore, useCartStore } from "@/store";
 let wishlist: number[] = [];
 let cartProducts: CartProductsType[] = [];
 
+// ** Toaster
+import { ToastContainer, toast } from "react-toastify";
+
 // ** Types
 import { ProductType } from "@/store/productStore";
 type CartProductsType = {
@@ -21,7 +24,7 @@ type CartProductsType = {
 	quantity: number;
 };
 
-const Summary = ({ product }: { product: ProductType }) => {
+const Summary = ({ product, closeHandler }: { product: ProductType; closeHandler: () => void }) => {
 	// ** Hooks
 	const [cookies, setCookie, removeCookie] = useCookies<string>(["wishlistProducts", "cart"]);
 	const wishlistState = useWishlistStore((state) => state.list);
@@ -36,6 +39,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 	// ** Handlers
 	const setCookieWishlistHandler = () => {
 		if (!wishlist.includes(product.id)) {
+			toast("The product added to wishlist");
 			wishlist.push(product.id);
 			setCookie("wishlistProducts", wishlist, { path: "/" });
 			wishlistReset(wishlist);
@@ -43,12 +47,14 @@ const Summary = ({ product }: { product: ProductType }) => {
 			let removed = wishlist.filter((item) => item !== product.id);
 			setCookie("wishlistProducts", removed, { path: "/" });
 			wishlistReset(removed);
+			toast("The product reoved from wishlist");
 		}
 		setIsWished(wishlist.includes(product.id));
 	};
 
 	const setCookieAddCartHandler = () => {
 		let productIndex = cartProducts.findIndex((item) => item.id === product.id);
+		toast("The product added to cart");
 
 		if (productIndex === -1) {
 			cartProducts.push({ id: product.id, quantity: quantity });
@@ -73,6 +79,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 				images: product.images,
 			});
 		}
+		closeHandler()
 	};
 
 	useEffect(() => {
@@ -138,6 +145,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 					<p>{isWished ? "Remove From " : "Add To "} WishList</p>
 				</span>
 			</div>
+			<ToastContainer autoClose={700} hideProgressBar={true} closeButton={true} />
 		</div>
 	);
 };

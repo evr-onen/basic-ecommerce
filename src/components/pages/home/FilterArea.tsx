@@ -57,6 +57,10 @@ const FilterArea = ({ products }: { products: ProductType[] }) => {
 			push(`product/${productId}`);
 		}
 	};
+
+	const closeHandler = () => {
+		setIsOpen(false);
+	};
 	useEffect(() => {
 		setfilterCats(usedCategories);
 	}, [usedCategories.length]);
@@ -204,7 +208,7 @@ const FilterArea = ({ products }: { products: ProductType[] }) => {
 				</div>
 			</div>
 			<Modal size="lg" isOpen={isOpen} onChange={(e) => setIsOpen(e)}>
-				<QuickLook product={productItem!} />
+				<QuickLook product={productItem!} closeHandler={closeHandler} />
 			</Modal>
 		</>
 	);
