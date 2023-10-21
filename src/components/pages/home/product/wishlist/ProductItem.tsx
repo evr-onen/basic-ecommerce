@@ -15,6 +15,9 @@ import { numberWithDot } from "@/utils/numberDotSeparator";
 // ** Types
 import { ProductType } from "@/store/productStore";
 
+// ** Toaster
+import { ToastContainer, toast } from "react-toastify";
+
 const ProductItem = ({ product }: { product: ProductType }) => {
 	// ** Hooks
 	const removeProduct = useWishlistStore((state) => state.remove);
@@ -29,6 +32,8 @@ const ProductItem = ({ product }: { product: ProductType }) => {
 	const removeProductHandler = () => {
 		removeProduct(product.id);
 		removeProductFromCookie();
+
+		toast("The product removed from wishlist");
 	};
 	const removeProductFromCookie = () => {
 		wishProducts = wishProducts.filter((item) => item !== product.id);
@@ -37,6 +42,7 @@ const ProductItem = ({ product }: { product: ProductType }) => {
 
 	return (
 		<div className="productItem flex w-full mt-4 items-center border-b border-black/40 p-4 flex-col md:flex-row ">
+			<ToastContainer autoClose={700} hideProgressBar={true} closeButton={true} />
 			<span
 				className="cursor-pointer hover:bg-black/10 w-8 h-8 rounded-full hidden items-center justify-center mr-4 md:flex "
 				onClick={removeProductHandler}

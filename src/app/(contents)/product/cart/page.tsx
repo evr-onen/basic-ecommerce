@@ -50,7 +50,7 @@ const Page = () => {
 	};
 
 	return (
-		<div className="CartPage mt-[10vh] min-h-[44vh]">
+		<div className="CartPage mt-[10vh] min-h-[44vh] ">
 			<div className="flex flex-col max-w-[1240px] w-full">
 				<h1 className="text-center">Cart</h1>
 				<div className="flex flex-col lg:flex-row w-full items-center xs:items-end lg:items-start ">

@@ -16,11 +16,11 @@ const MainFooter = () => {
 						<li className="text-center" key={pagesItem.pageType}>
 							{pagesItem.pageType}
 							{pagesItem.pages.length > 0 && (
-								<div>
-									<ul className="mb-8 flex flex-col items-center md:items-start">
+								<div className="relative flex flex-col items-center">
+									<ul className="mb-8   md:items-start w-[150px] overflow-hidden">
 										{pagesItem.pages.map((pageItem) => {
 											return (
-												<li key={pageItem.id} className="flex">
+												<li key={pageItem.id} className="flex relative left-0">
 													<svg
 														className="md:block hidden"
 														width="24"
@@ -37,7 +37,7 @@ const MainFooter = () => {
 															strokeLinejoin="round"
 														/>
 													</svg>
-													<Link href={pageItem.href} className="ml-8 md:ml-0">
+													<Link href={pageItem.href} className="ml-8 md:ml-0 ">
 														{pageItem.label}
 													</Link>
 												</li>

@@ -29,7 +29,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 		return (
 			<div
 				key={productItem.id}
-				className="itemWrapper bg-white flex flex-col items-center !opacity-100 !visible  mb-8 mr-8 duration-1000 min-w-[240px] min-h-[240px] "
+				className="itemWrapper bg-white flex flex-col items-center !opacity-100 !visible  mb-8 mr-8 duration-1000 min-w-[240px] min-h-[240px] md:w-28"
 			>
 				<div
 					className="imageWrapper group w-auto h-full relative flex overflow-hidden"
@@ -111,6 +111,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 		if (target.classList[0] === "searchOverlay") {
 			onChange(false);
 			setValue("");
+			document.querySelector("body")!.style.overflow = "auto";
 		}
 	};
 
@@ -122,7 +123,7 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 
 	return (
 		<div
-			className={`searchOverlay fixed left-0 top-0 right-0 bottom-0 bg-black duration-500 flex flex-col items-center ${
+			className={`searchOverlay fixed left-0 top-0 right-0 bottom-0 bg-black/80 duration-500 flex flex-col items-center ${
 				isOpen ? "opacity-100 visible" : "opacity-0 invisible"
 			}`}
 			onClick={(e) => overlayCloseHandler(e)}
@@ -138,7 +139,10 @@ const Search = ({ isOpen, onChange }: { isOpen: boolean; onChange: React.Dispatc
 				/>
 			</div>
 
-			<div id="searchProductItems" className="mt-40  flex    flex-wrap justify-center  min-w-fit bg-opacity-0">
+			<div
+				id="searchProductItems"
+				className="mt-40  flex  overflow-auto  flex-wrap justify-center  min-w-fit bg-opacity-0"
+			>
 				{renderSearchResult()}
 			</div>
 		</div>

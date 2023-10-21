@@ -15,6 +15,7 @@ import { numberWithDot } from "@/utils/numberDotSeparator";
 
 // ** Types
 import { CartProductsType } from "@/store/cartStore";
+import { ToastContainer, toast } from "react-toastify";
 type CartItemsType = {
 	id: number;
 	quantity: number;
@@ -37,6 +38,7 @@ const ProductItem = ({ product, trigger }: { product: CartProductsType; trigger:
 	const removeProductHandler = () => {
 		removeCart(product.id);
 		removeProductFromCookie();
+		toast("The product removed from cart");
 	};
 	const removeProductFromCookie = () => {
 		cartItems = cartItems.filter((item) => item.id !== product.id);
@@ -101,6 +103,7 @@ const ProductItem = ({ product, trigger }: { product: CartProductsType; trigger:
 					</p>
 				</div>
 			</div>
+			<ToastContainer autoClose={700} hideProgressBar={true} closeButton={true} />
 		</div>
 	);
 };

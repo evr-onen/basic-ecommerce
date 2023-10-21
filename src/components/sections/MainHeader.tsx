@@ -219,6 +219,12 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 		}
 	};
 
+	const openSearchHandler = () => {
+		setIsSearchOpen(true);
+		globalState.isSearchOpen;
+		document.querySelector("body")!.style.overflow = "hidden";
+	};
+
 	return (
 		<div className="headerWrapper px-2 w-full flex justify-center fixed left-0 right-0 top-0 bg-white z-20">
 			<div id="mainHeader" className="h-[10vh]  max-w-[1240px] w-full flex justify-between">
@@ -265,7 +271,7 @@ const MainHeader = ({ children }: { children?: React.ReactNode }) => {
 							</div>
 						</div>
 					)}
-					<div className="search my-auto cursor-pointer" onClick={() => setIsSearchOpen(true)}>
+					<div className="search my-auto cursor-pointer" onClick={() => openSearchHandler()}>
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<circle cx="11.5" cy="11.5" r="9.5" stroke="#1C274C" strokeWidth="1.5" />
 							<path d="M18.5 18.5L22 22" stroke="#1C274C" strokeWidth="1.5" strokeLinecap="round" />

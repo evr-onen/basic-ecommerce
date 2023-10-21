@@ -56,6 +56,17 @@ input[type="number"] {
 	-ms-user-select: none; /* IE 10 and IE 11 */
 	user-select: none; /* Standard syntax */
 }
-.lightbox-container{
-    background: rgba(0, 0, 0, 0.8);
+.lightbox-container {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(to bottom right, #898c90 0%, #0f81a7 100%);
+	border-radius: 5px;
+}
+::-webkit-scrollbar {
+	background-color: rgba(122, 77, 77, 0.8);
+	color: rgba(122, 77, 77, 0.8);
+	width: 10px;
+	height: 10px;
 }

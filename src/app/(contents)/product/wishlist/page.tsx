@@ -30,7 +30,7 @@ const Page = () => {
 
 	return (
 		<div className="CartPage mt-[10vh]   max-w-[1240px] w-full ">
-			<div className="flex flex-col h-full">
+			<div className="flex flex-col h-full min-h-[39vh]">
 				<h1 className="text-center md:text-left xl:pl-0 md:pl-8 pl-0">Wishlist</h1>
 				<div className="flex justify-center h-full">
 					<div className="left w-2/3 md:mr-12 flex flex-wrap justify-center h-full">{renderCartItem()}</div>

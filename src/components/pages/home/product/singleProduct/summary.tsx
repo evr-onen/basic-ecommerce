@@ -14,6 +14,9 @@ import { useWishlistStore, useCartStore } from "@/store";
 let wishlist: number[] = [];
 let cartProducts: CartProductsType[] = [];
 
+// ** Toast
+import { ToastContainer, toast } from "react-toastify";
+
 type CartProductsType = {
 	id: number;
 	quantity: number;
@@ -33,23 +36,24 @@ const Summary = ({ product }: { product: ProductType }) => {
 	const [quantity, setQuantity] = useState(1);
 	const [isWished, setIsWished] = useState(wishlistState.includes(product?.id));
 
-	// ** Handlers
 	const setCookieWishlistHandler = () => {
 		if (!wishlist.includes(product.id)) {
 			wishlist.push(product.id);
 			setCookie("wishlistProducts", wishlist, { path: "/" });
 			wishlistReset(wishlist);
+			toast("The product added to wishlist");
 		} else {
 			let removed = wishlist.filter((item) => item !== product.id);
 			setCookie("wishlistProducts", removed, { path: "/" });
 			wishlistReset(removed);
+			toast("The product removed from wishlist");
 		}
 		setIsWished(wishlist.includes(product.id));
 	};
 
 	const setCookieAddCartHandler = () => {
 		let productIndex = cartProducts.findIndex((item) => item.id === product.id);
-
+		toast("The product added to cart");
 		if (productIndex === -1) {
 			cartProducts.push({ id: product.id, quantity: quantity });
 			setCookie("cart", cartProducts, { path: "/" });
@@ -138,6 +142,7 @@ const Summary = ({ product }: { product: ProductType }) => {
 					<p>{isWished ? "Remove From " : "Add To "} WishList</p>
 				</span>
 			</div>
+			<ToastContainer autoClose={700} hideProgressBar={true} closeButton={true} />
 		</div>
 	);
 };
